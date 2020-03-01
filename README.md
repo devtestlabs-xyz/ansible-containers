@@ -1,7 +1,7 @@
-# Canned Ansible
+# Ansible Containers
 ![](https://github.com/devtestlabs-xyz/ansible-winrm-container/workflows/Build%20and%20Publish%20Docker/badge.svg)
 
-This project manages the assets required to build and publish extremely lightweight RedHat Ansible OCI compliant container images that run on Docker, Podman, and Kubernetes. 
+This project manages the assets required to build and publish extremely lightweight [RedHat Ansible](https://www.ansible.com/) [OCI compliant](https://www.opencontainers.org/) container images that run on [Docker](https://www.docker.com/), [Podman](https://podman.io/), and [Kubernetes](https://kubernetes.io/). 
 
 All OCI compliant container images managed by this project have the following commonalities:
 
@@ -10,6 +10,8 @@ All OCI compliant container images managed by this project have the following co
 * Python 3 in installed and configured
 
 * Only the necessary APK packages and Python libraries are installed
+
+* All container images can be run as Docker containers, Podman containers, and in K8s
 
 ## Goals
 * Maintain up-to-date Ansible container images for Windows host management and Linux host management
@@ -87,3 +89,15 @@ For more information about the `build` command, see [Docker Commandline Referenc
 * https://hub.docker.com/r/devtestlabs/krb5-sidecar
 
 * https://docs.docker.com/engine/reference/commandline/build/
+
+* https://www.opencontainers.org/
+
+* https://www.redhat.com/en/technologies/management/ansible
+
+* https://www.ansible.com/
+
+* https://kubernetes.io/
+
+* https://www.docker.com/
+
+* https://podman.io/

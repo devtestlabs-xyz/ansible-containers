@@ -1,9 +1,17 @@
 # Official Alpine Linux image
-FROM alpine:3.11.3
+ARG  BASE_IMAGE_VERSION
+FROM alpine:${BASE_IMAGE_VERSION}
+
+# Build arguments
+ARG ANSIBLE_VERSION
+ARG VCS_URL
+ARG VCS_REF
+# ARG BUILD_DATE
+ARG IMAGE_LONG_VERSION
 
 # Pin Ansible version
 # https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
-ENV ANSIBLE_VERSION 2.9.1
+# ENV ANSIBLE_VERSION 2.9.1
 
 ENV VIRT_APK_PACKAGES \
   build-base \
@@ -53,15 +61,16 @@ RUN set -x && \
 
 ENTRYPOINT ["entrypoint.sh"]
 
+# Labels
+# http://label-schema.org/rc1/ namespace labels
 LABEL maintainer="Ryan Craig"
 
-# http://label-schema.org/rc1/ namespace labels
 LABEL org.label-schema.schema-version="1.0"
 #LABEL org.label-schema.build-date=$BUILD_DATE
-LABEL org.label-schema.name="devtestlabs/ansible-ssh"
-LABEL org.label-schema.description="Redhat Ansible controller for Linux"
+LABEL org.label-schema.name="devtestlabs/ansible"
+LABEL org.label-schema.description="Redhat Ansible controller for Linux; SSH and KRB5 variant"
 #LABEL org.label-schema.url=$ORG_WEB_URL
-#LABEL org.label-schema.vcs-url=$VCS_URL
-#LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.vcs-url=$VCS_URL
+LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.vendor="devtestlabs.xyz"
-#LABEL org.label-schema.version=$BUILD_VERSION
+LABEL org.label-schema.version=$IMAGE_LONG_VERSION

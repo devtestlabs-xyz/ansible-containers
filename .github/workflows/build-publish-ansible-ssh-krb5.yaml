@@ -1,0 +1,32 @@
+name: Build and Publish Ansible SSH KRB5 image
+ 
+on:
+  push:
+    paths:
+    - 'dockerfiles/ansible-ssh-krb5/**'
+    - '!dockerfiles/ansible-ssh-krb5/README.md'  
+
+env:
+  _GH_BASE_URI: https://github.com/
+  _ANSIBLE_VERSION: 2.9.1
+  _BASE_IMAGE_VERSION: 3.11.3
+  _BASE_IMAGE: alpine
+  _IMAGE_VARIANT: ssh-krb5
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Publish to Docker Repository
+        env:
+          _IMAGE_LONG_VERSION: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          context: dockerfiles/ansible-ssh-krb5
+          buildargs: BASE_IMAGE_VERSION=${{ env._BASE_IMAGE_VERSION }}, ANSIBLE_VERSION=${{ env._ANSIBLE_VERSION }}, VCS_URL=${{ env._GH_BASE_URI }}${{ env.GITHUB_REPOSITORY }}, VCS_REF=${{ env.GITHUB_SHA }}, IMAGE_LONG_VERSION=${{ env._IMAGE_LONG_VERSION }}
+          name: ${{ secrets.DOCKERHUB_REPO }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PAT }}
+          tags: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}, ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}, ${{ env._IMAGE_VARIANT }}

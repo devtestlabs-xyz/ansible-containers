@@ -67,7 +67,7 @@ LABEL maintainer="Ryan Craig"
 
 LABEL org.label-schema.schema-version="1.0"
 #LABEL org.label-schema.build-date=$BUILD_DATE
-LABEL org.label-schema.name="devtestlabs/ansible-psrp"
+LABEL org.label-schema.name="devtestlabs/ansible"
 LABEL org.label-schema.description="Redhat Ansible controller for Windows; PSRP KRB5 variant"
 #LABEL org.label-schema.url=$ORG_WEB_URL
 LABEL org.label-schema.vcs-url=$VCS_URL

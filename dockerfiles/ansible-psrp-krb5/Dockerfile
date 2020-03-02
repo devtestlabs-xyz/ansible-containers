@@ -7,7 +7,8 @@ ARG ANSIBLE_VERSION
 ARG VCS_URL
 ARG VCS_REF
 # ARG ORG_WEB_URL
-ARG BUILD_DATE
+# ARG BUILD_DATE
+ARG IMAGE_LONG_VERSION
 
 # Pin Ansible version
 # https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
@@ -70,6 +71,6 @@ LABEL org.label-schema.name="devtestlabs/ansible-psrp"
 LABEL org.label-schema.description="Redhat Ansible controller for Windows"
 #LABEL org.label-schema.url=$ORG_WEB_URL
 LABEL org.label-schema.vcs-url=$VCS_URL
-#LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.vendor="devtestlabs.xyz"
-#LABEL org.label-schema.version=$BUILD_VERSION
+LABEL org.label-schema.version=$IMAGE_LONG_VERSION

@@ -15,14 +15,15 @@ jobs:
       _BASE_IMAGE_VERSION: 3.11.3
       _BASE_IMAGE: alpine
       _IMAGE_VARIANT: psrp-krb5
-      
+      _IMAGE_LONG_VERSION: ${{ _ANSIBLE_VERSION }}-${{ _IMAGE_VARIANT }}-${{ _BASE_IMAGE }}${{ _BASE_IMAGE_VERSION }}
+
     steps:
       - uses: actions/checkout@v1
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           context: dockerfiles/ansible-psrp-krb5
-          buildargs: BASE_IMAGE_VERSION=${{ _BASE_IMAGE_VERSION }}, ANSIBLE_VERSION=${{ _ANSIBLE_VERSION }}, VCS_URL=${{ GH_BASE_URI }}${{ GITHUB_REPOSITORY }}, VCS_REF=${{ GITHUB_SHA }}
+          buildargs: BASE_IMAGE_VERSION=${{ _BASE_IMAGE_VERSION }}, ANSIBLE_VERSION=${{ _ANSIBLE_VERSION }}, VCS_URL=${{ GH_BASE_URI }}${{ GITHUB_REPOSITORY }}, VCS_REF=${{ GITHUB_SHA }}, IMAGE_LONG_VERSION=${{ _IMAGE_LONG_VERSION }}
           name: ${{ secrets.DOCKERHUB_REPO }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PAT }}

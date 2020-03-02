@@ -15,15 +15,18 @@ All OCI compliant container images managed by this project have the following co
 
 * Only the necessary APK packages and Python libraries are installed
 
-* All container images can be run as Docker containers, Podman containers, and in K8s
+* Kerberos client and tools is installed on each variant
+
+* Ready to manage Active Directory domain-joined Windows and Linux hosts using Kerberos authentication over TLS encrypted WinRM and PSRP or SSH
+
+* Run as Docker containers, Podman containers, and in K8s
 
 ## Goals
 * Maintain up-to-date Ansible container images for Windows host management and Linux host management
 
-* Strive for the smallest image size possible
+* Strive for the smallest image size possible for efficient distribution to global on-premise datacenters and clouds
 
 * Solve enterprise problems such as securely managing Active Directory domain-joined Windows and Linux hosts
-
 
 ## Ansible image variants
 The following Ansible image variants are maintained by this project.
@@ -71,17 +74,17 @@ docker run \
 *TODO: Describe preflight, useful bind mounts, etc...*
 
 ## Build your own image locally
-If you want to build your own image locally simply `cd` into `dockerfiles/ansible-{{ VARIANT }}`.
+If you want to build your own image locally simply `cd` into `dockerfiles/ansible:{{ VARIANT_TAG }}`.
 
-*NOTE: Replace {{ VARIANT }} with the the actual directory name part.*
+*NOTE: Replace {{ VARIANT_TAG }} with the the actual directory name part.*
 
 In terminal, execute:
 
 ```
-docker build -t ansible-{{ VARIANT }} .
+docker build -t ansible:{{ VARIANT_TAG }} .
 ```
 
-*NOTE: Replace {{ VARIANT }} with the the Docker image name part. You can name your local image whatever you want; `mylocalrepo/ansible-123-abc` for example.*
+*NOTE: Replace {{ VARIANT_TAG }} with the the Docker image name part. You can name your local image whatever you want; `mylocalrepo/ansible:123` for example.*
 
 For more information about the `build` command, see [Docker Commandline Reference - build](https://docs.docker.com/engine/reference/commandline/build/).
 

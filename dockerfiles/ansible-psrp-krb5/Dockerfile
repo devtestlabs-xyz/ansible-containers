@@ -74,3 +74,5 @@ LABEL org.label-schema.vcs-url=$VCS_URL
 LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.vendor="devtestlabs.xyz"
 LABEL org.label-schema.version=$IMAGE_LONG_VERSION
+
+

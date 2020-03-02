@@ -12,7 +12,7 @@ env:
   _BASE_IMAGE_VERSION: 3.11.3
   _BASE_IMAGE: alpine
   _IMAGE_VARIANT: psrp-krb5
-  _IMAGE_LONG_VERSION: ${{ _ANSIBLE_VERSION }}-${{ _IMAGE_VARIANT }}-${{ _BASE_IMAGE }}${{ _BASE_IMAGE_VERSION }}
+  _IMAGE_LONG_VERSION: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}
     
 jobs:
   build:

@@ -1,5 +1,9 @@
 # Ansible Containers
-![](https://github.com/devtestlabs-xyz/ansible-winrm-container/workflows/Build%20and%20Publish%20Docker/badge.svg)
+![Build and Publish Ansible WinRM KRB5 SC image](https://github.com/devtestlabs-xyz/ansible-containers/workflows/Build%20and%20Publish%20Ansible%20WinRM%20KRB5%20SC%20image/badge.svg) 
+![Build and Publish Ansible SSH KRB5 image](https://github.com/devtestlabs-xyz/ansible-containers/workflows/Build%20and%20Publish%20Ansible%20SSH%20KRB5%20image/badge.svg) 
+![Build and Publish Ansible PSRP KRB5 SC image](https://github.com/devtestlabs-xyz/ansible-containers/workflows/Build%20and%20Publish%20Ansible%20PSRP%20KRB5%20SC%20image/badge.svg) 
+![Build and Publish Ansible WinRM KRB5 image](https://github.com/devtestlabs-xyz/ansible-containers/workflows/Build%20and%20Publish%20Ansible%20WinRM%20KRB5%20image/badge.svg) 
+![Build and Publish Ansible PSRP KRB5 image](https://github.com/devtestlabs-xyz/ansible-containers/workflows/Build%20and%20Publish%20Ansible%20PSRP%20KRB5%20image/badge.svg)
 
 This project manages the assets required to build and publish extremely lightweight [RedHat Ansible](https://www.ansible.com/) [OCI compliant](https://www.opencontainers.org/) container images that run on [Docker](https://www.docker.com/), [Podman](https://podman.io/), and [Kubernetes](https://kubernetes.io/). 
 

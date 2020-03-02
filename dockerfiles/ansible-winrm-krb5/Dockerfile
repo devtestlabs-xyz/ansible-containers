@@ -50,7 +50,7 @@ RUN set -x && \
     apk add --no-cache ${APK_PACKAGES} && \
     \
     echo "===> Installing Ansible version ${ANSIBLE_VERSION}..."  && \
-    pip3 install --no-cache-dir kerberos pywinrm pywinrm[kerberos] ansible==${ANSIBLE_VERSION} && \
+    pip3 install --no-cache-dir kerberos pywinrm pywinrm[kerberos] ansible==${ANSIBLE_VERSION} jmespath && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     \

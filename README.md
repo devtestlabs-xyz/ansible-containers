@@ -41,9 +41,28 @@ The following Ansible image variants are maintained by this project.
 
 ### Pull an image
 
-*TODO: Once images are published, document...*
+```
+docker pull devestlabs/ansible:{{ VARIANT_TAG }}
+```
+
+*NOTE: Replace {{ VARIANT_TAG }} with actual, [valid tagname](https://hub.docker.com/r/devtestlabs/ansible/tags)*
 
 ### Run a container
+*example docker run command*
+```
+docker run \
+  --rm -it \
+  -v /host/path/to/playbooks:/ansible/playbooks \
+  -v /host/path/to/inventory:/ansible/inventory devtestlabs/ansible:{{ VARIANT_TAG }} \
+  -i /ansible/inventory/hosts.yaml  \
+  -c local --limit 'some-inventory-group-name' \
+  /ansible/playbooks/a-playbook.yaml \
+  -e 'ENV_VAR1=someVal ENV_VAR2=anotherVal'
+```
+
+*NOTE: Replace {{ VARIANT_TAG }} with actual, [valid tagname](https://hub.docker.com/r/devtestlabs/ansible/tags)*
+
+*NOTE: If you need to override Ansible's default behavior, you can bind mount the `ansible.cfg` file or pass in [Ansible environment variables](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings) on the command line or in a Docker `.env` file.*
 
 *TODO: Describe preflight, useful bind mounts, etc...*
 

@@ -63,9 +63,9 @@ RUN set -x && \
 ENTRYPOINT ["entrypoint.sh"]
 
 # Labels
+# http://label-schema.org/rc1/ namespace labels
 LABEL maintainer="Ryan Craig"
 
-# http://label-schema.org/rc1/ namespace labels
 LABEL org.label-schema.schema-version="1.0"
 #LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.name="devtestlabs/ansible-psrp"

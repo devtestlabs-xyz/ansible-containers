@@ -25,7 +25,7 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           context: dockerfiles/ansible-psrp-krb5
-          buildargs: BASE_IMAGE_VERSION=${{ env._BASE_IMAGE_VERSION }}, ANSIBLE_VERSION=${{ env._ANSIBLE_VERSION }}, VCS_URL=${{ GH_BASE_URI }}${{ GITHUB_REPOSITORY }}, VCS_REF=${{ GITHUB_SHA }}, IMAGE_LONG_VERSION=${{ env._IMAGE_LONG_VERSION }}
+          buildargs: BASE_IMAGE_VERSION=${{ env._BASE_IMAGE_VERSION }}, ANSIBLE_VERSION=${{ env._ANSIBLE_VERSION }}, VCS_URL=${{ env._GH_BASE_URI }}${{ GITHUB_REPOSITORY }}, VCS_REF=${{ GITHUB_SHA }}, IMAGE_LONG_VERSION=${{ env._IMAGE_LONG_VERSION }}
           name: ${{ secrets.DOCKERHUB_REPO }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PAT }}

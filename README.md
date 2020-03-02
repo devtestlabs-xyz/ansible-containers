@@ -15,7 +15,7 @@ All OCI compliant container images managed by this project have the following co
 
 * Only the necessary APK packages and Python libraries are installed
 
-* Kerberos client and tools is installed on each variant
+* Required Kerberos packages are installed on each variant
 
 * Ready to manage Active Directory domain-joined Windows and Linux hosts using Kerberos authentication over TLS encrypted WinRM and PSRP or SSH
 

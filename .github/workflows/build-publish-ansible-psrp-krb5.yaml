@@ -12,7 +12,6 @@ env:
   _BASE_IMAGE_VERSION: 3.11.3
   _BASE_IMAGE: alpine
   _IMAGE_VARIANT: psrp-krb5
-  _IMAGE_LONG_VERSION: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}
     
 jobs:
   build:
@@ -21,6 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Publish to Docker Repository
+        env:
+          _IMAGE_LONG_VERSION: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           context: dockerfiles/ansible-psrp-krb5

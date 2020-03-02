@@ -5,18 +5,17 @@ on:
     paths:
     - 'dockerfiles/ansible-psrp-krb5/**'
     - '!dockerfiles/ansible-psrp-krb5/README.md'  
-
-env:
-  _GH_BASE_URI: https://github.com/
-  _ANSIBLE_VERSION: 2.9.1
-  _BASE_IMAGE_VERSION: 3.11.3
-  _BASE_IMAGE: alpine
-  _IMAGE_VARIANT: psrp-krb5
     
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      _GH_BASE_URI: https://github.com/
+      _ANSIBLE_VERSION: 2.9.1
+      _BASE_IMAGE_VERSION: 3.11.3
+      _BASE_IMAGE: alpine
+      _IMAGE_VARIANT: psrp-krb5
+      
     steps:
       - uses: actions/checkout@v1
       - name: Publish to Docker Repository

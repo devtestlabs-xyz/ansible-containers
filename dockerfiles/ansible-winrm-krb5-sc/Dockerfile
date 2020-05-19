@@ -41,30 +41,30 @@ ENV APK_PACKAGES \
 COPY entrypoint.sh /usr/local/bin
 RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat
 
-RUN set -x && \
-    \
-    env && \
-    echo "===> Temporarily installing APKs (virtual packages)..."  && \
-    apk add --no-cache --virtual .build-deps ${VIRT_APK_PACKAGES} && \
-      \
-    echo "==> Upgrading apk and system..."  && \
-    apk update && apk upgrade && \
-    \
-    echo "==> Installing Python and other required APKs..."  && \
-    apk add --no-cache ${APK_PACKAGES} && \
-    \
-    echo "===> Installing Ansible version ${ANSIBLE_VERSION}..."  && \
-    pip3 install --no-cache-dir kerberos pywinrm pywinrm[kerberos] ansible==${ANSIBLE_VERSION} jmespath && \
-    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
-    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
-    \
-    echo "===> Removing default KRB5 configuration file..."  && \
-    rm -f /etc/krb5.conf && \
-    \
-    echo "===> Cleaning up..."  && \
-    apk del .build-deps && \
-    chmod +x /usr/local/bin/entrypoint.sh && \
-    unset http_proxy https_proxy
+RUN set -x \
+    && \
+    env \
+    && echo "===> Temporarily installing APKs (virtual packages)..." \
+    && apk add --no-cache --virtual .build-deps ${VIRT_APK_PACKAGES} \
+    && \
+    echo "==> Upgrading apk and system..." \
+    && apk update && apk upgrade \
+    && \
+    echo "==> Installing Python and other required APKs..." \
+    && apk add --no-cache ${APK_PACKAGES} \
+    && \
+    echo "===> Installing Ansible version ${ANSIBLE_VERSION}..." \
+    && pip3 install --no-cache-dir kerberos pywinrm pywinrm[kerberos] ansible==${ANSIBLE_VERSION} jmespath \
+    && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
+    && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
+    && \
+    echo "===> Removing default KRB5 configuration file..." \
+    && rm -f /etc/krb5.conf \
+    && \
+    echo "===> Cleaning up..." \
+    && apk del .build-deps \
+    && chmod +x /usr/local/bin/entrypoint.sh \
+    && unset http_proxy https_proxy
 
 ENTRYPOINT ["entrypoint.sh"]
 

@@ -39,21 +39,21 @@ RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat
 
 RUN set -x \
     && \
-    env \
+    && env \
     && echo "===> Temporarily installing APKs (virtual packages)..." \
     && \
-    echo "==> Upgrading apk and system..." \
+    && echo "==> Upgrading apk and system..." \
     && apk update && apk upgrade \
     && \
-    echo "==> Installing Python and other required APKs..." \
+    && echo "==> Installing Python and other required APKs..." \
     && apk add --no-cache ${APK_PACKAGES} \
     && \
-    echo "===> Installing Ansible version ${ANSIBLE_VERSION}..." \
+    && echo "===> Installing Ansible version ${ANSIBLE_VERSION}..." \
     && pip3 install --no-cache-dir kerberos ansible==${ANSIBLE_VERSION} jmespath \
     && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
     && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
     && \
-    echo "===> Cleaning up..." \
+    && echo "===> Cleaning up..." \
     && apk del .build-deps \
     && chmod +x /usr/local/bin/entrypoint.sh \
     && unset http_proxy https_proxy

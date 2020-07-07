@@ -3,6 +3,7 @@ ARG BASE_IMAGE_VERSION
 FROM alpine:${BASE_IMAGE_VERSION}
 
 # Build arguments
+# Values set and passed into docker build by Github Actions
 ARG ANSIBLE_VERSION
 ARG VCS_URL
 ARG VCS_REF

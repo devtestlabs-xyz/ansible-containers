@@ -29,6 +29,7 @@ ENV VIRT_APK_PACKAGES \
 ENV APK_PACKAGES \
   openssh-client \
   python3 \
+  py3-pip \
   py3-dateutil \
   py3-httplib2 \
   py3-jinja2 \

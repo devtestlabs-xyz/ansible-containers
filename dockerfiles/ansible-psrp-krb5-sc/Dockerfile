@@ -70,13 +70,13 @@ ENTRYPOINT ["entrypoint.sh"]
 LABEL maintainer="Ryan Craig"
 
 LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.build-date=$BUILD_DATETIME
+LABEL org.label-schema.build-date=${BUILD_DATETIME}
 LABEL org.label-schema.name="devtestlabs/ansible"
 LABEL org.label-schema.description="Redhat Ansible controller for Windows; PSRP KRB5 Sidecar variant"
 #LABEL org.label-schema.url=$ORG_WEB_URL
-LABEL org.label-schema.vcs-url=$VCS_URL
-LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.vcs-url=${VCS_URL}
+LABEL org.label-schema.vcs-ref=${VCS_REF}
 LABEL org.label-schema.vendor="devtestlabs.xyz"
-LABEL org.label-schema.version=$IMAGE_LONG_VERSION
+LABEL org.label-schema.version=${IMAGE_LONG_VERSION}
 
 # https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html

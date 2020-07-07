@@ -4,11 +4,12 @@ on:
   push:
     paths:
     - 'dockerfiles/ansible-psrp-krb5-sc/**'
+    - '.requirements/ansible.version'
     - '!dockerfiles/ansible-psrp-krb5-sc/README.md'  
 
 env:
   _GH_BASE_URI: https://github.com/
-  _ANSIBLE_VERSION: 2.9.10
+  _ANSIBLE_VERSION: 2.9.1
   _BASE_IMAGE_VERSION: 3.12.0
   _BASE_IMAGE: alpine
   _IMAGE_VARIANT: psrp-krb5-sc
@@ -17,6 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set _ANSIBLE_VERSION env variable to value in .requirements/ansible.version file
+        run: |
+          content=`cat .requirements/ansible.version`
+          echo "::set-env name=_ANSIBLE_VERSION::$content"
       - name: Set _BUILD_DATETIME env variable to current datetime
         run: echo "::set-env name=_BUILD_DATETIME::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
       - name: Get Github commit short SHA

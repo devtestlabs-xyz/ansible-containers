@@ -24,12 +24,12 @@ ENV VIRT_APK_PACKAGES \
   libffi-dev \
   openssl-dev \
   krb5-dev \
-  python3-dev
+  python3-dev \
+  py3-pip
 
 ENV APK_PACKAGES \
   openssh-client \
   python3 \
-  py3-pip \
   py3-dateutil \
   py3-httplib2 \
   py3-jinja2 \

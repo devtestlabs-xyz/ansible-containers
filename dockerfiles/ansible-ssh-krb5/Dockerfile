@@ -11,7 +11,7 @@ ARG IMAGE_LONG_VERSION
 
 # Pin Ansible version
 # https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
-# ENV ANSIBLE_VERSION 2.9.1
+#ENV ANSIBLE_VERSION 2.9.1
 
 ENV VIRT_APK_PACKAGES \
   build-base \
@@ -40,8 +40,8 @@ RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat
 RUN set -x \
     && \
     env \
-    && \
-    echo "===> Temporarily installing APKs (virtual packages)..." \
+    && echo "===> Temporarily installing APKs (virtual packages)..." \
+    && apk add --no-cache --virtual .build-deps ${VIRT_APK_PACKAGES} \
     && \
     echo "==> Upgrading apk and system..." \
     && apk update && apk upgrade \
@@ -68,7 +68,7 @@ LABEL maintainer="Ryan Craig"
 LABEL org.label-schema.schema-version="1.0"
 #LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.name="devtestlabs/ansible"
-LABEL org.label-schema.description="Redhat Ansible controller for Linux; SSH and KRB5 variant"
+LABEL org.label-schema.description="Redhat Ansible controller for Linux and Windows 2019 (with OpenSSH enabled); SSH KRB5 variant"
 #LABEL org.label-schema.url=$ORG_WEB_URL
 LABEL org.label-schema.vcs-url=$VCS_URL
 LABEL org.label-schema.vcs-ref=$VCS_REF

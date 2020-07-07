@@ -18,11 +18,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Read package.json
+      - name: Read .requirements/ansible.version
         id: ansible_ver
         uses: juliangruber/read-file-action@v1
         with:
-          path: ${{ github.workspace }}/.requirements/ansible.version
+          path: .requirements/ansible.version
       - name: Echo ansible.version
         run: echo ${{ steps.ansible_ver.outputs.content }}
       - name: Set _ANSIBLE_VERSION env variable to value in ./.requirements/ansible.version file

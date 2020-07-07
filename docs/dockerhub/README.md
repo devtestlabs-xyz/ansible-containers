@@ -12,23 +12,28 @@ If you want to guarantee consistency through space and time use the long image t
 
 ## Ansible for Windows management
 ### PSRP and KRB5
+* [2.9.10-psrp-krb5-alpine3.12.0, 2.9.10-psrp-krb5, psrp-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-krb5)
 * [2.9.9-psrp-krb5-alpine3.11.6, 2.9.9-psrp-krb5, psrp-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-krb5)
 * [2.9.1-psrp-krb5-alpine3.11.3, 2.9.1-psrp-krb5, psrp-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-krb5)
 
 ### PSRP and KRB5 configured for use with KRB5 Sidecar
+* [2.9.10-psrp-krb5-sc-alpine3.12.0, 2.9.10-psrp-krb5-sc, psrp-krb5-sc](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-krb5-sc)
 * [2.9.9-psrp-krb5-sc-alpine3.11.6, 2.9.9-psrp-krb5-sc, psrp-krb5-sc](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-krb5-sc)
 * [2.9.1-psrp-krb5-sc-alpine3.11.3, 2.9.1-psrp-krb5-sc, psrp-krb5-sc](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-krb5-sc)
 
 ### WinRM and KRB5
+* [2.9.10-winrm-krb5-alpine3.12.0, 2.9.10-winrm-krb5, winrm-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-winrm-krb5)
 * [2.9.9-winrm-krb5-alpine3.11.6, 2.9.9-winrm-krb5, winrm-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-winrm-krb5)
 * [2.9.1-winrm-krb5-alpine3.11.3, 2.9.1-winrm-krb5, winrm-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-winrm-krb5)
 
 ### WinRM and KRB5 configured for use with KRB5 Sidecar
+* [2.9.10-winrm-krb5-sc-alpine3.12.0, 2.9.10-winrm-krb5-sc, winrm-krb5-sc](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-winrm-sc)
 * [2.9.9-winrm-krb5-sc-alpine3.11.6, 2.9.9-winrm-krb5-sc, winrm-krb5-sc](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-winrm-sc)
 * [2.9.1-winrm-krb5-sc-alpine3.11.3, 2.9.1-winrm-krb5-sc, winrm-krb5-sc](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-psrp-winrm-sc)
 
 ## Ansible for Linux management
 ### SSH and KRB5
+* [2.9.10-ssh-krb5-alpine3.12.0, 2.9.10-ssh-krb5, ssh-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-ssh-krb5)
 * [2.9.9-ssh-krb5-alpine3.11.6, 2.9.9-ssh-krb5, ssh-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-ssh-krb5)
 * [2.9.1-ssh-krb5-alpine3.11.3, 2.9.1-ssh-krb5, ssh-krb5](https://github.com/devtestlabs-xyz/ansible-containers/tree/master/dockerfiles/ansible-ssh-krb5)
 

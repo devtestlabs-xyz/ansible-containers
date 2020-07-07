@@ -18,16 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Read .requirements/ansible.version
-        id: ansible_ver
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: .requirements/ansible.version
-      - name: Echo ansible.version
-        run: echo ${{ steps.ansible_ver.outputs.content }}
       - name: Set _ANSIBLE_VERSION env variable to value in ./.requirements/ansible.version file
+        working-directory: ./.requirements
         run: |
-          content=`cat ./.requirements/ansible.version`
+          content=`cat ./ansible.version`
           echo "::set-env name=_ANSIBLE_VERSION::${{ steps.ansible_ver.outputs.content }}"
       - name: Set _BUILD_DATETIME env variable to current datetime
         run: echo "::set-env name=_BUILD_DATETIME::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"

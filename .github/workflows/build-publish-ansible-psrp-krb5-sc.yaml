@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set current date as BUILD_DATETIME env variable
-        run: echo "::set-env name=BUILD_DATETIME::$(date +'%Y-%m-%dT%H:%M:%S')"
+      - name: Set _BUILD_DATETIME env variable to current datetime
+        run: echo "::set-env name=_BUILD_DATETIME::$(date +'%Y-%m-%dT%H:%M:%S')"
       - uses: actions/checkout@v1
       - name: Publish to Docker Repository
         env:

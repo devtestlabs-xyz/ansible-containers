@@ -19,10 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Get version
+        id: vars
+        run: echo ::set-output name=version::$(cat ./.requirements/ansible.version)
+      - name: Test output
+        run: echo ${{ steps.vars.outputs.version }}
       - name: Set _ANSIBLE_VERSION env variable to value in ./.requirements/ansible.version file
         working-directory: ./.requirements
         run: |
-          content=`cat ./ansible.version`
+          content=`cat .requirements/ansible.version`
           echo "::set-env name=_ANSIBLE_VERSION::${{ steps.ansible_ver.outputs.content }}"
       - name: Set _BUILD_DATETIME env variable to current datetime
         run: echo "::set-env name=_BUILD_DATETIME::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"

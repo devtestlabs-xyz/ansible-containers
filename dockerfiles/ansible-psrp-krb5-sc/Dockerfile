@@ -54,7 +54,7 @@ RUN set -x \
     && apk add --no-cache ${APK_PACKAGES} \
     && \
     echo "===> Installing Ansible version ${ANSIBLE_VERSION}..." \
-    && pip install --no-cache-dir kerberos pypsrp pypsrp[kerberos] ansible==${ANSIBLE_VERSION} jmespath \
+    && pip3 install --no-cache-dir kerberos pypsrp pypsrp[kerberos] ansible==${ANSIBLE_VERSION} jmespath \
     && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
     && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
     && \
@@ -76,7 +76,7 @@ LABEL org.label-schema.schema-version="1.0"
 #LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.name="devtestlabs/ansible"
 LABEL org.label-schema.description="Redhat Ansible controller for Windows; PSRP KRB5 Sidecar variant"
-##LABEL org.label-schema.url=$ORG_WEB_URL
+#LABEL org.label-schema.url=$ORG_WEB_URL
 LABEL org.label-schema.vcs-url=$VCS_URL
 LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.vendor="devtestlabs.xyz"

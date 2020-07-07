@@ -22,7 +22,7 @@ jobs:
         id: ansible_ver
         uses: juliangruber/read-file-action@v1
         with:
-          path: ./.requirements/ansible.version
+          path: ${{ github.workspace }}/.requirements/ansible.version
       - name: Echo ansible.version
         run: echo ${{ steps.ansible_ver.outputs.content }}
       - name: Set _ANSIBLE_VERSION env variable to value in ./.requirements/ansible.version file

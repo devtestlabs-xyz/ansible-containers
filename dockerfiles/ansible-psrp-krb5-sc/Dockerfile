@@ -13,7 +13,6 @@ ARG IMAGE_LONG_VERSION
 # Shared memory with attached KRB5 Sidecar container
 ENV KRB5CCNAME=/dev/shm/ccache
 
-# Pin Ansible version
 # https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
 #ENV ANSIBLE_VERSION 2.9.10
 

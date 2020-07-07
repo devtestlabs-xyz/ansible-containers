@@ -1,5 +1,5 @@
 # Official Alpine Linux image
-ARG  BASE_IMAGE_VERSION
+ARG BASE_IMAGE_VERSION
 FROM alpine:${BASE_IMAGE_VERSION}
 
 # Build arguments

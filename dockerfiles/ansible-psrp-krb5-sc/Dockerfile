@@ -13,9 +13,6 @@ ARG IMAGE_LONG_VERSION
 # Shared memory with attached KRB5 Sidecar container
 ENV KRB5CCNAME=/dev/shm/ccache
 
-# https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
-#ENV ANSIBLE_VERSION 2.9.10
-
 ENV VIRT_APK_PACKAGES \
   build-base \
   linux-headers \
@@ -81,3 +78,5 @@ LABEL org.label-schema.vcs-url=$VCS_URL
 LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.vendor="devtestlabs.xyz"
 LABEL org.label-schema.version=$IMAGE_LONG_VERSION
+
+# https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html

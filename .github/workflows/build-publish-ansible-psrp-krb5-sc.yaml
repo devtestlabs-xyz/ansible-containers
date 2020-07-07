@@ -18,16 +18,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Set _ANSIBLE_VERSION env variable to value in ./.requirements/ansible.version file
-        working-directory: ./.requirements
         run: |
-          content=`cat ./ansible.version`
+          content=`cat .requirements./ansible.version`
           echo "::set-env name=_ANSIBLE_VERSION::${{ steps.ansible_ver.outputs.content }}"
       - name: Set _BUILD_DATETIME env variable to current datetime
         run: echo "::set-env name=_BUILD_DATETIME::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
       - name: Get Github commit short SHA
         run: echo "::set-env name=_GH_SHA8::$(echo ${GITHUB_SHA} | cut -c1-8)"
-      - uses: actions/checkout@v1
       - name: Publish to Docker Repository
         env:
           _IMAGE_LONG_VERSION: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}

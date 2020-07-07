@@ -40,7 +40,8 @@ RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat
 RUN set -x \
     && \
     env \
-    && echo "===> Temporarily installing APKs (virtual packages)..." \
+    && \
+    echo "===> Temporarily installing APKs (virtual packages)..." \
     && \
     echo "==> Upgrading apk and system..." \
     && apk update && apk upgrade \

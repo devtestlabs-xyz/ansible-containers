@@ -22,12 +22,12 @@ ENV VIRT_APK_PACKAGES \
   libffi-dev \
   openssl-dev \
   krb5-dev \
-  python3-dev \
-  py3-pip
+  python3-dev
 
 ENV APK_PACKAGES \
   openssh-client \
   python3 \
+  py3-pip \
   py3-dateutil \
   py3-httplib2 \
   py3-jinja2 \
@@ -52,7 +52,7 @@ RUN set -x \
     && apk add --no-cache ${APK_PACKAGES} \
     && \
     echo "===> Installing Ansible version ${ANSIBLE_VERSION}..." \
-    && pip3 install --no-cache-dir kerberos pypsrp pypsrp[kerberos] gssapi ansible==${ANSIBLE_VERSION} jmespath \
+    && pip3 install --no-cache-dir requests[socks] pypsrp[kerberos] ansible==${ANSIBLE_VERSION} jmespath \
     && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
     && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
     && \

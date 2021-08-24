@@ -9,10 +9,6 @@ ARG VCS_REF
 # ARG BUILD_DATE
 ARG IMAGE_LONG_VERSION
 
-# Pin Ansible version
-# https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
-#ENV ANSIBLE_VERSION 2.9.10
-
 ENV VIRT_APK_PACKAGES \
   build-base \
   linux-headers \

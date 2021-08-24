@@ -31,7 +31,8 @@ ENV APK_PACKAGES \
   py3-paramiko \
   py3-yaml \
   ca-certificates \
-  krb5 
+  krb5 \
+  git
 
 COPY entrypoint.sh /usr/local/bin
 RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat

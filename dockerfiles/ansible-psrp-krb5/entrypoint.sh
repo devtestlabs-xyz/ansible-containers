@@ -6,10 +6,10 @@ printf "\n# Ansible control node for secure control of Linux and Windows hosts #
 printf "\n######################################################################\n"
 
 # If "-e uid={custom/local user id}" flag is not set for "docker run" command, use 9999 as default
-_GROUP=${GROUP:-ansible}
-_USER=${USER:-ansible}
-_UID=${UID:-9999}
-_GID=${GID:-9999}
+_GROUP=${OCI_CONTAINER_HOST_GROUP:-ansible}
+_USER=${OCI_CONTAINER_HOST_USER:-ansible}
+_UID=${OCI_CONTAINER_HOST_UID:-9999}
+_GID=${OCI_CONTAINER_HOST_GID:-9999}
 
 # Notify user about the UID selected
 echo "Current UID : $_UID"

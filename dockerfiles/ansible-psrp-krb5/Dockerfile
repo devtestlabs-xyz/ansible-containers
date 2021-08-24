@@ -32,7 +32,10 @@ ENV APK_PACKAGES \
   py3-yaml \
   ca-certificates \
   krb5 \
-  git
+  git \
+  bash \
+  shadow \
+  su-exec
 
 COPY entrypoint.sh /usr/local/bin
 RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat

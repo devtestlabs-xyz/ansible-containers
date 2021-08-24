@@ -25,9 +25,9 @@ echo "Current GID : $_GID"
 # Create user with selected UID
 /usr/sbin/useradd --system --create-home --shell /bin/bash --home /home/${_USER} --uid $_UID --gid $_GID $_USER
 
-# Change ownership of /puml (source) and /images (out) paths to current UID:GID
-chown -R $_UID:$_GID /puml
-chown -R $_UID:$_GID /images
+# Change ownership of ANSIBLE_*_MOUNT paths to current UID:GID
+chown -R $_UID:$_GID ${ANSIBLE_PLAYBOOKS_MOUNT_DESTINATION}
+chown -R $_UID:$_GID ${ANSIBLE_INVENTORY_MOUNT_DESTINATION}
 
 #exec "$@"
 su-exec $_UID "$@"

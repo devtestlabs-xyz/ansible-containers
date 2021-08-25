@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Set _ANSIBLE_VERSION env variable
-        run: echo ::set-env name=_ANSIBLE_VERSION::$(cat ./.requirements/ansible.version)
+        run: echo $(cat ./.requirements/ansible.version) >> $_ANSIBLE_VERSION
       - name: Set _BASE_IMAGE_VERSION env variable
         run: echo ::set-env name=_BASE_IMAGE_VERSION::$(cat ./.requirements/alpine-linux.version)
       - name: Set _BUILD_DATETIME env variable to current datetime

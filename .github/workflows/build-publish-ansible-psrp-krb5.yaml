@@ -4,29 +4,35 @@ on:
   push:
     paths:
     - 'dockerfiles/ansible-psrp-krb5/**'
+    - '.requirements/ansible.version'
     - '!dockerfiles/ansible-psrp-krb5/README.md'  
 
 env:
   _GH_BASE_URI: https://github.com/
-  _ANSIBLE_VERSION: 4.4.0
-  _BASE_IMAGE_VERSION: 3.14.1
   _BASE_IMAGE: alpine
   _IMAGE_VARIANT: psrp-krb5
     
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
+      - name: Set _ANSIBLE_VERSION env variable
+        run: echo ::set-env name=_ANSIBLE_VERSION::$(cat ./.requirements/ansible.version)
+      - name: Set _BASE_IMAGE_VERSION env variable
+        run: echo ::set-env name=_BASE_IMAGE_VERSION::$(cat ./.requirements/alpine-linux.version)
+      - name: Set _BUILD_DATETIME env variable to current datetime
+        run: echo "::set-env name=_BUILD_DATETIME::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+      - name: Get Github commit short SHA
+        run: echo "::set-env name=_GH_SHA8::$(echo ${GITHUB_SHA} | cut -c1-8)"
       - name: Publish to Docker Repository
         env:
           _IMAGE_LONG_VERSION: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          context: dockerfiles/ansible-psrp-krb5
-          buildargs: BASE_IMAGE_VERSION=${{ env._BASE_IMAGE_VERSION }}, ANSIBLE_VERSION=${{ env._ANSIBLE_VERSION }}, VCS_URL=${{ env._GH_BASE_URI }}${{ env.GITHUB_REPOSITORY }}, VCS_REF=${{ env.GITHUB_SHA }}, IMAGE_LONG_VERSION=${{ env._IMAGE_LONG_VERSION }}
           name: ${{ secrets.DOCKERHUB_REPO }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PAT }}
-          tags: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}, ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}, ${{ env._IMAGE_VARIANT }}
+          context: dockerfiles/ansible-psrp-krb5
+          buildargs: BASE_IMAGE_VERSION=${{ env._BASE_IMAGE_VERSION }}, ANSIBLE_VERSION=${{ env._ANSIBLE_VERSION }}, VCS_URL=${{ env._GH_BASE_URI }}${{ env.GITHUB_REPOSITORY }}, VCS_REF=${{ env._GH_SHA8 }}, IMAGE_LONG_VERSION=${{ env._IMAGE_LONG_VERSION }}, BUILD_DATETIME=${{ env._BUILD_DATETIME }}
+          tags: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}, ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}, ${{ env._IMAGE_VARIANT }}, ${{ env._IMAGE_VARIANT }}-${{ env._GH_SHA8 }}

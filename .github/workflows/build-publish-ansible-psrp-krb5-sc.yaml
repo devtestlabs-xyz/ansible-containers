@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3.0.0
       - name: Set _ANSIBLE_VERSION env variable
         run: echo $(cat ./.requirements/ansible.version) >> $_ANSIBLE_VERSION
       - name: Set _BUILD_DATETIME env variable to current datetime

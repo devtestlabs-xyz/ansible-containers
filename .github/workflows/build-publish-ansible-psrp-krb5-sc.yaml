@@ -27,7 +27,7 @@ jobs:
       - name: Publish to Docker Repository
         env:
           _IMAGE_LONG_VERSION: ${{ env._ANSIBLE_VERSION }}-${{ env._IMAGE_VARIANT }}-${{ env._BASE_IMAGE }}${{ env._BASE_IMAGE_VERSION }}
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: ${{ secrets.DOCKERHUB_REPO }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
